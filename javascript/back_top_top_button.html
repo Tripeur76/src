@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            z-index:1;
+        }
+        section {
+            min-height:60vh;
+            padding:1rem;
+            background:#000;
+            color:#efefef;
+            z-index:1;
+            margin-bottom:50px;
+        }
+
+        body section:nth-child(even) {
+            background:#efefef;
+            color:#000;
+        }
+
+        .btn-back-top {    
+            position:fixed;
+            bottom:0;
+            right:0;
+            left:auto;        
+            width:30px;
+            height:30px;
+            background:#ccc;
+            margin:1rem;
+            padding:.5rem;
+            border:none;
+            border-radius:5px;
+            float:right;
+            z-index:10;
+        }
+        
+        .btn-back-top::after {
+            content:'^';
+            color:#000;
+            font-size:1.5rem;
+        }
+
+        .hide {display:none;}
+    </style>
+</head>
+<body>
+    <h1>Back top top button</h1>
+    <section>
+        <h2>Title 1</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos adipisci delectus illo velit ut? Eveniet et rem possimus tempora porro facilis, explicabo modi vel autem fuga repellendus quos voluptas? Esse.</p>
+    </section>
+
+    <section>
+        <h2>Title 2</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos adipisci delectus illo velit ut? Eveniet et rem possimus tempora porro facilis, explicabo modi vel autem fuga repellendus quos voluptas? Esse.</p>
+    </section>
+    <section>
+        <h2>Title 3</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos adipisci delectus illo velit ut? Eveniet et rem possimus tempora porro facilis, explicabo modi vel autem fuga repellendus quos voluptas? Esse.</p>
+    </section>
+    <section>
+        <h2>Title 4</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos adipisci delectus illo velit ut? Eveniet et rem possimus tempora porro facilis, explicabo modi vel autem fuga repellendus quos voluptas? Esse.</p>
+    </section>
+
+    <button type="button" class="btn-back-top hide"></button>
+
+    <script>
+        // btn-back-top
+        // affichage du bouton en fonction du scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            window.onscroll = function(ev) {
+                if(window.pageYOffset > 100)
+                {
+                    document.querySelector(".btn-back-top").classList.remove('hide');        
+                }
+                else{
+                    document.querySelector(".btn-back-top").classList.add('hide'); 
+                }
+            };
+        });
+
+        // evènement au clic
+        document.querySelector('.btn-back-top').addEventListener('click', e => {
+            e.preventDefault();
+            window.scrollTo({
+                top:0,
+                behavior: 'smooth',
+            });
+        });
+
+    </script>
+</body>
+</html>
