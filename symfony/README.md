@@ -1,5 +1,5 @@
 # Création du projet
-composer create-project symfony/website-skeleton MyProject
+    composer create-project symfony/website-skeleton MyProject
 
 # configuration des environnements
     .env.local.dev
