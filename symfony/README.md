@@ -17,7 +17,7 @@
     composer require symfonycasts/verify-email-bundle
 
 
-
+---
 # Front-end
 
 ## Création du controller principal
