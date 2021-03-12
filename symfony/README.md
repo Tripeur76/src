@@ -25,8 +25,9 @@
         php bin/console doctrine:schema:update --force --env=dev
 
 Exemple: https://github.com/TBoileau/key-privilege/blob/develop/Makefile
-
 ...
+
+---
 # Création des fixtures
     composer require orm-fixtures --dev
     php bin/console make:fixtures    
@@ -68,8 +69,9 @@ Exemple: https://github.com/TBoileau/key-privilege/blob/develop/Makefile
     access_control:
         - { path: ^/mon-compte, roles: ROLE_USER }
         - { path: ^/admin, roles: ROLE_ADMIN }
-
 ...
+
+---
 # Création des tests
 
 ## Initialisation des tests
