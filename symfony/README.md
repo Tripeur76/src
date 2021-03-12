@@ -10,10 +10,20 @@
 
 ## Contenu des fichiers .env.{env}.local
     DATABASE_URL=mysql://root@127.0.0.1:3306/database_name
-    APP_SECRET=
+    APP_SECRET=d673b72c1e6161b3ba8867a665809781
 ---
 # Création du fichier MakeFile
-php bin/console doctrine:database:create
+
+    database-test:
+        php bin/console doctrine:database:drop --if-exists --force --env=test
+        php bin/console doctrine:database:create --env=test
+        php bin/console doctrine:schema:update --force --env=test
+
+    database-dev:
+        php bin/console doctrine:database:drop --if-exists --force --env=dev
+        php bin/console doctrine:database:create --env=dev
+        php bin/console doctrine:schema:update --force --env=dev
+
 Exemple: https://github.com/TBoileau/key-privilege/blob/develop/Makefile
 
 ...
@@ -26,7 +36,9 @@ Exemple: https://github.com/TBoileau/key-privilege/blob/develop/Makefile
 # Configuration du projet
 ## Configuration de la langue
     config/packages/translation.yaml
+
 ## Configuration du format des dates
+...
 
 ## Configuration des formulaires (bootstrap)
     Fichier : config/packages/twig.yaml
@@ -53,7 +65,17 @@ Exemple: https://github.com/TBoileau/key-privilege/blob/develop/Makefile
 
 
 ## Configuration du fichier config/packages/security.yaml
+    access_control:
+        - { path: ^/mon-compte, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+
 ...
+# Création des tests
+
+## Initialisation des tests
+php bin/phpunit
+php bin/phpunit --coverage-html ./coverage
+
 
 ---
 # Front-end
