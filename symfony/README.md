@@ -5,8 +5,9 @@
     php -S localhost:8000 -t public
 
 # Configuration des environnements
-    .env.local.dev
+    .env.dev.local
     .env.test.local
+    .env.prod.local
 
 ## Contenu des fichiers .env.{env}.local
     DATABASE_URL=mysql://root@127.0.0.1:3306/database_name
