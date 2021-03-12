@@ -14,16 +14,7 @@
     APP_SECRET=d673b72c1e6161b3ba8867a665809781
 ---
 # Création du fichier MakeFile
-
-    database-test:
-        php bin/console doctrine:database:drop --if-exists --force --env=test
-        php bin/console doctrine:database:create --env=test
-        php bin/console doctrine:schema:update --force --env=test
-
-    database-dev:
-        php bin/console doctrine:database:drop --if-exists --force --env=dev
-        php bin/console doctrine:database:create --env=dev
-        php bin/console doctrine:schema:update --force --env=dev
+    Voir fichier Makefile
 
 Exemple: https://github.com/TBoileau/key-privilege/blob/develop/Makefile
 ...
