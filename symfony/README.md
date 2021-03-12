@@ -14,7 +14,7 @@
     APP_SECRET=d673b72c1e6161b3ba8867a665809781
 ---
 # Création du fichier MakeFile
-    Voir fichier [Makefile](Makedfile)
+    Voir fichier [Makefile](./Makefile)
 
 Exemple: https://github.com/TBoileau/key-privilege/blob/develop/Makefile
 ...
