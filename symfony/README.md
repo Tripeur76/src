@@ -1,3 +1,7 @@
+# Sommaire 
+##Toggle 
+https://gist.github.com/joyrexus/16041f2426450e73f5df9391f7f7ae5f
+
 # Création du projet
     composer create-project symfony/website-skeleton MyProject
 
@@ -14,7 +18,7 @@
     APP_SECRET=d673b72c1e6161b3ba8867a665809781
 ---
 # Création du fichier MakeFile
-    Voir fichier [Makefile](./Makefile)
+    Voir fichier Makefile (https://github.com/steveldev/src/blob/master/symfony/Makefile)
 
 Exemple: https://github.com/TBoileau/key-privilege/blob/develop/Makefile
 ...
