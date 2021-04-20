@@ -69,31 +69,63 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos adipisci delectus illo velit ut? Eveniet et rem possimus tempora porro facilis, explicabo modi vel autem fuga repellendus quos voluptas? Esse.</p>
     </section>
 
-    <button type="button" class="btn-back-top hide"></button>
 
     <script>
-        // btn-back-top
-        // affichage du bouton en fonction du scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            window.onscroll = function(ev) {
-                if(window.pageYOffset > 100)
-                {
-                    document.querySelector(".btn-back-top").classList.remove('hide');        
-                }
-                else{
-                    document.querySelector(".btn-back-top").classList.add('hide'); 
-                }
-            };
-        });
+        // btn-back-top    
+    // Ajoute un button sur la page 
+    //  permettant de scroller automatiquement ers le haut de la page
+    //  avec un effect smooth
 
-        // evènement au clic
-        document.querySelector('.btn-back-top').addEventListener('click', e => {
-            e.preventDefault();
-            window.scrollTo({
-                top:0,
-                behavior: 'smooth',
-            });
+    // custom css class : .btn-back-top
+    // button Text : btnHTML.innerHTML 
+
+
+
+    // ajout du bouton dans le dom
+
+    // création du bouton 
+    var btnHTML = document.createElement('button');
+
+    // contenu HTML du bouton 
+    btnHTML.innerHTML = '<i class="fas fa-chevron-circle-up fa-2x text-muted"></i>';
+    // classes css du bouton
+    var btnHTMLClassList = 'btn-back-top btn bg-white';
+
+    // ajoute chaque classe de btnHTMLClassList à l'élément btnHTML
+    btnHTMLClassList.split(' ').forEach(className => {
+        btnHTML.classList.add(className);
+    });
+
+    // insert le bouton avant les balises <script> du body
+    var insertBeforScript = document.body.querySelectorAll('script')[0];
+    if(insertBeforScript) {
+        insertBeforScript.parentNode.insertBefore(btnHTML,insertBeforScript);
+    } else {
+        document.body.append(btnHTML);
+    }   
+
+
+    // affichage du bouton en fonction de la position du scroll
+    document.addEventListener('DOMContentLoaded', function() {
+        window.onscroll = function(ev) {
+            if(window.pageYOffset > 400)
+            {
+                document.querySelector(".btn-back-top").classList.remove('d-none');        
+            }
+            else{
+                document.querySelector(".btn-back-top").classList.add('d-none'); 
+            }
+        };
+    });
+
+    // evènement au clic
+    document.querySelector('.btn-back-top').addEventListener('click', e => {
+        e.preventDefault();
+        window.scrollTo({
+            top:0,
+            behavior: 'smooth',
         });
+    });
 
     </script>
 </body>
