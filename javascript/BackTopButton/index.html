@@ -4,129 +4,97 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    
+    <title>Back to top button</title>
+
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="./button_back_top.js"></script>
 
     <style>
-        body{
-            z-index:1;
-        }
-        section {
-            min-height:60vh;
-            padding:1rem;
-            background:#000;
-            color:#efefef;
-            z-index:1;
-            margin-bottom:50px;
-        }
-
-        body section:nth-child(even) {
-            background:#efefef;
+        .btn-back-top {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            left: auto;
+            margin: 1rem;
+            background:none;
             color:#000;
+            border: none;
+            font-size:2rem;
+            z-index: 10;
         }
+        .btn-back-top:hover {cursor:pointer;}
 
-        .btn-back-top {    
-            position:fixed;
-            bottom:0;
-            right:0;
-            left:auto;        
-            width:30px;
-            height:30px;
-            background:#ccc;
-            margin:1rem;
-            padding:.5rem;
-            border:none;
-            border-radius:5px;
-            float:right;
-            z-index:10;
-        }
-        
-        .btn-back-top::after {
-            content:'^';
-            color:#000;
-            font-size:1.5rem;
-        }
+        section {height:100vh;}
+        section:nth-child(odd) {background:#ccc;}
 
-        .hide {display:none;}
+        .d-none {display:none;}
+
     </style>
 </head>
 <body>
-    <h1>Back top top button</h1>
-    <section>
-        <h2>Title 1</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos adipisci delectus illo velit ut? Eveniet et rem possimus tempora porro facilis, explicabo modi vel autem fuga repellendus quos voluptas? Esse.</p>
-    </section>
-
-    <section>
-        <h2>Title 2</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos adipisci delectus illo velit ut? Eveniet et rem possimus tempora porro facilis, explicabo modi vel autem fuga repellendus quos voluptas? Esse.</p>
-    </section>
-    <section>
-        <h2>Title 3</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos adipisci delectus illo velit ut? Eveniet et rem possimus tempora porro facilis, explicabo modi vel autem fuga repellendus quos voluptas? Esse.</p>
-    </section>
-    <section>
-        <h2>Title 4</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos adipisci delectus illo velit ut? Eveniet et rem possimus tempora porro facilis, explicabo modi vel autem fuga repellendus quos voluptas? Esse.</p>
-    </section>
-
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section></section>
 
     <script>
-        // btn-back-top    
-    // Ajoute un button sur la page 
-    //  permettant de scroller automatiquement ers le haut de la page
-    //  avec un effect smooth
-
-    // custom css class : .btn-back-top
-    // button Text : btnHTML.innerHTML 
-
-
-
-    // ajout du bouton dans le dom
-
     // création du bouton 
-    var btnHTML = document.createElement('button');
 
-    // contenu HTML du bouton 
-    btnHTML.innerHTML = '<i class="fas fa-chevron-circle-up fa-2x text-muted"></i>';
-    // classes css du bouton
-    var btnHTMLClassList = 'btn-back-top btn bg-white';
+        var btnHTML = document.createElement('button');
+        // contenu HTML du bouton 
+        //default : btnHTML.innerHTML = '<i class="fas fa-chevron-circle-up fa-2x text-muted"></i>';
+        btnHTML.innerHTML = '^';
 
-    // ajoute chaque classe de btnHTMLClassList à l'élément btnHTML
-    btnHTMLClassList.split(' ').forEach(className => {
-        btnHTML.classList.add(className);
-    });
+        // classes css du bouton
+        var btnHTMLClassList = 'btn-back-top btn d-none';
 
-    // insert le bouton avant les balises <script> du body
-    var insertBeforScript = document.body.querySelectorAll('script')[0];
-    if(insertBeforScript) {
-        insertBeforScript.parentNode.insertBefore(btnHTML,insertBeforScript);
-    } else {
-        document.body.append(btnHTML);
-    }   
-
-
-    // affichage du bouton en fonction de la position du scroll
-    document.addEventListener('DOMContentLoaded', function() {
-        window.onscroll = function(ev) {
-            if(window.pageYOffset > 400)
-            {
-                document.querySelector(".btn-back-top").classList.remove('d-none');        
-            }
-            else{
-                document.querySelector(".btn-back-top").classList.add('d-none'); 
-            }
-        };
-    });
-
-    // evènement au clic
-    document.querySelector('.btn-back-top').addEventListener('click', e => {
-        e.preventDefault();
-        window.scrollTo({
-            top:0,
-            behavior: 'smooth',
+        // ajoute chaque classe de btnHTMLClassList à l'élément btnHTML
+        btnHTMLClassList.split(' ').forEach(className => {
+            btnHTML.classList.add(className);
         });
-    });
 
+    // intégration du bouton
+        // Recherche la première balise <script> dans le body
+        var insertBeforScript = document.body.querySelectorAll('script')[0];
+
+        // Si une balise script est trouvée
+        if(insertBeforScript) {
+            // Insert le bouton avant la première balise <script>
+            insertBeforScript.parentNode.insertBefore(btnHTML,insertBeforScript);
+        // Si aucune balise script trouvée
+        } else {
+            // Insert le bouton avant la première balise <script>
+            document.body.append(btnHTML);
+
+        } 
+    // Ecoute du scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            // mise en écoute du scroll
+            window.onscroll = function(ev) {
+                // comparaison du positionnement du scroll
+                if(window.pageYOffset > 200)
+                {
+                    // supprime la classe 'd-none' du bouton
+                    document.querySelector(".btn-back-top").classList.remove('d-none'); 
+                }  else{
+
+                    // ajoute la classe 'd-none' au bouton
+                    document.querySelector(".btn-back-top").classList.add('d-none'); 
+                }
+            };
+        });
+
+    // Action au clic : button
+        document.querySelector('.btn-back-top').addEventListener('click', e => {
+            e.preventDefault();
+            // action au clic
+            window.scrollTo({
+                top:0,
+                behavior: 'smooth',
+            });
+        });
     </script>
 </body>
 </html>
