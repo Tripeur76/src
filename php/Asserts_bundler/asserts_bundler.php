@@ -1,12 +1,23 @@
-<style>
-    body {font-family:sans-serif;line-height:2rem;}
-    table {width:100%;border-collapse:collapse;margin-bottom:2rem;}
-    thead{border-bottom:1px solid silver;}
-    th {width:25%;text-align:left;}
-    th:first-child{width:50%;}
-    td{padding:.5rem;}
-    .success {background:#d1e7dd;}
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assert bundler</title>
+    <style>
+        body {font-family:sans-serif;line-height:2rem;}
+        table {width:100%;border-collapse:collapse;margin-bottom:2rem;}
+        thead{border-bottom:1px solid silver;}
+        th {width:25%;text-align:left;}
+        th:first-child{width:50%;}
+        td{padding:.5rem;}
+        .success {background:#d1e7dd;}
+    </style>
+</head>
+<body>
+    
+
 <h1>Assets Bundler</h1>
 
 <?php
@@ -70,4 +81,8 @@ function build(string $dir) {
 }
 
 ?>
+
+    
+</body>
+</html>
 
