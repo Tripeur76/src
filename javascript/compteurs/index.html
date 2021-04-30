@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compteur JS</title>
+    <style>
+        div { margin:2rem 0;font-size:5rem;text-align:center;}
+    </style>
+</head>
+<body>
+    
+    <div class="counter-1"></div>
+    <div class="counter-2"></div>
+    
+    <script>   
+
+        addCounter('.counter-1',10, 400);         
+        addCounter('.counter-2', 20,200);
+
+
+        function addCounter(container, max, interval) {
+            // add counter in HTML
+            container = document.querySelector(container);
+            var counter = document.createElement('span');
+            counter.classList.add('counter');
+            counter.innerText = 0;
+            container.prepend(counter);
+
+            // counter
+            var interval = window.setInterval( () => {
+
+                let el = counter;//document.container.querySelector('span.counter');
+                let count = Number(el.innerText);
+               
+                if(count >= max) {
+                    // stop
+                    window.clearInterval(interval);
+                } else{
+                    // increment
+                    count++;
+
+                    // update HTML
+                    el.innerText = count; 
+                }                
+            }, interval );
+        }
+    </script>
+</body>
+</html>
