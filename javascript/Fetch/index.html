@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch</title>
+</head>
+<body>
+    
+    <script>
+        let form = document.querySelector('form');
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault()            
+            let data = new FormData(form)   
+            let url = form.getAttribute('action')
+            // fetch
+            let response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'X-Requested-with': 'xmlhttprequest'
+                },
+                body: data
+            })
+            // responses
+            let responseData = await response.json()
+            if(response.ok === false) {
+                // erreurs
+                let errors = responseData
+            } else{
+                // the response must be json
+                console.log(responseData);
+            }
+        });
+
+    </script>
+</body>
+</html>
