@@ -1,0 +1,66 @@
+	
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Google Map</title>
+
+    <style>
+        #map {min-height: 350px; }
+
+    </style>
+</head>
+<body>    
+
+    <div id="map"></div>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+	<script async src="https://maps.googleapis.com/maps/api/js?key=__API_KEY__&callback=initMap&libraries=&v=weekly"></script>
+
+	<script>
+			
+		// convert localisation name into lat and lng	
+		const converter = (city) => {
+
+		};
+
+		const citymap = {
+			rouen: {
+			center: { lat: 49.4413171, lng: 1.0561542 },
+			},
+		};
+
+		function initMap() {
+			// Create the map.
+			const map = new google.maps.Map(document.getElementById("map"), {
+				zoom: 4,
+				center: { lat: 49.4413171, lng: 1.0561542 },
+				mapTypeId: "terrain",
+			});
+
+			// Construct the circle for each value in citymap.
+			// Note: We scale the area of the circle based on the population.
+			for (const city in citymap) {
+				// Add the circle for this city to the map.
+				const cityCircle = new google.maps.Circle({
+					strokeColor: "#FF0000",
+					strokeOpacity: 0.4,
+					strokeWeight: 2,
+					fillColor: "#FF0000",
+					fillOpacity: 0.35,
+					map,
+					center: citymap[city].center,
+					radius: 35 * 1000, // distance en mètres
+				});
+			}
+		}
+
+	</script>
+
+
+
+</body>
+</html>
